@@ -876,6 +876,7 @@ func newListener(address string) (*tcpKeepAliveListener, error) {
 	return &tcpKeepAliveListener{l.(*net.TCPListener)}, nil
 }
 
+// 组装 middlewares 为 handlerfunc
 func applyMiddleware(h HandlerFunc, middleware ...MiddlewareFunc) HandlerFunc {
 	for i := len(middleware) - 1; i >= 0; i-- {
 		h = middleware[i](h)
